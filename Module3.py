@@ -232,7 +232,7 @@ def Selected():
          msl=float(E11T1.get())
          if Criterion26.get()=='none':
             md=None
-         elif Criterion25.get()=='integer':
+         elif Criterion26.get()=='integer':
               md=int(E10T1.get())
          ss=float(E15T1.get())
          ne=int(E13T1.get())
