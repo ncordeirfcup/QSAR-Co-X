@@ -1,0 +1,6 @@
+C,epsilon,gamma,kernel
+0.1,0.1,1,rbf
+1,0.5,0.1,linear
+10,1,0.001,poly
+100,5,0.001,sigmoid
+1000,10,,
