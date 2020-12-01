@@ -307,6 +307,18 @@ def writefile2(X,y,model,cvm,filerw):
     #filerw.write('MCC: '+str(a9)+"\n")
     #filerw.write('ROC_AUC: '+str(a10)+"\n") 
     
+def enable():
+    E10T1['state']='normal'
+    
+def disable():
+    E10T1['state']='disabled'
+
+def enable1():
+    E6T1['state']='normal'
+    
+def disable1():
+    E6T1['state']='disabled'
+
 form = tk.Tk()
 form.title("QSAR-Co-X (Module-3)")
 form.geometry("700x650")
@@ -336,20 +348,20 @@ b4=tk.Button(tab1,text='Browse', command=data2,font=("Helvetica", 10))
 b4.place(x=480,y=40)
 
 thirdLabelTabThreer2c1=Label(tab1, text='Correlation cut-off',font=("Helvetica", 12))
-thirdLabelTabThreer2c1.place(x=50,y=70)
+thirdLabelTabThreer2c1.place(x=45,y=70)
 thirdEntryTabThreer3c1=Entry(tab1, width=7)
-thirdEntryTabThreer3c1.place(x=180,y=70)
+thirdEntryTabThreer3c1.place(x=180,y=73)
 
 
 fourthLabelTabThreer4c1=Label(tab1, text='Variance cut-off',font=("Helvetica", 12))
 fourthLabelTabThreer4c1.place(x=250,y=70)
 fourthEntryTabThreer5c1=Entry(tab1, width=7)
-fourthEntryTabThreer5c1.place(x=370,y=70)
+fourthEntryTabThreer5c1.place(x=370,y=73)
 
 forthLabelTabOne=tk.Label(tab1, text="CV(model predictability)",font=("Helvetica", 12))
 forthLabelTabOne.place(x=450,y=70)
 forthEntryTabOne = tk.Entry(tab1, width=7)
-forthEntryTabOne.place(x=630,y=70)
+forthEntryTabOne.place(x=630,y=73)
 
 var1= IntVar()
 CB1=Checkbutton(tab1, text = "KNN",  variable=var1, \
@@ -380,8 +392,8 @@ C6= ttk.Radiobutton(tab1, text='Brute', variable=Criterion3, value='brute')
 
 C3.place(x=80,y=190)
 C4.place(x=130,y=190)
-C5.place(x=80,y=220)
-C6.place(x=150,y=220)
+C5.place(x=80,y=210)
+C6.place(x=150,y=210)
 
 b5=Button(tab1, text='Generate', command=sol,bg="orange",font=("Helvetica", 10),anchor=W, justify=LEFT)
 b5.place(x=100,y=250)
@@ -394,13 +406,12 @@ CB2=Checkbutton(tab1, text = "Bernoulli Naive Bayes",  variable=var2, \
 CB2.place(x=450,y=100)
 
 L4T1= tk.Label(tab1, text="alpha",font=("Helvetica", 10))
-L4T1.place(x=450,y=130)
+L4T1.place(x=455,y=130)
 E2T1 = tk.Entry(tab1, width=10)
 E2T1.place(x=503,y=133)
 
 Criterion4 = BooleanVar()
 #Criterion4.set(True)
-
 L5T1= tk.Label(tab1, text="Fit_prior",font=("Helvetica", 10))
 L5T1.place(x=450,y=160)
 C7= ttk.Radiobutton(tab1, text='True', variable=Criterion4, value=True)
@@ -419,7 +430,7 @@ CB2=Checkbutton(tab1, text = "Support Vector Classification",  variable=var3, \
 CB2.place(x=200,y=100)
 
 L6T1= tk.Label(tab1, text="C",font=("Helvetica", 10))
-L6T1.place(x=270,y=130)
+L6T1.place(x=280,y=130)
 E3T1 = tk.Entry(tab1, width=10)
 E3T1.place(x=303,y=133)
 
@@ -431,14 +442,18 @@ E4T1.place(x=303,y=160)
 Criterion5 = StringVar()
 
 L8T1= tk.Label(tab1, text="Kernel",font=("Helvetica", 10))
-L8T1.place(x=230,y=190)
+L8T1.place(x=250,y=190)
 C9= ttk.Radiobutton(tab1, text='Linear', variable=Criterion5, value='linear')
 C10= ttk.Radiobutton(tab1, text='RBF', variable=Criterion5, value='rbf')
+C9_x= ttk.Radiobutton(tab1, text='Poly', variable=Criterion5, value='poly')
+C10_x= ttk.Radiobutton(tab1, text='Sigmoid', variable=Criterion5, value='sigmoid')
 C9.place(x=290,y=190)
 C10.place(x=370,y=190)
+C9_x.place(x=290,y=210)
+C10_x.place(x=370,y=210)
 
 b6=Button(tab1, text='Generate', command=sol,bg="orange",font=("Helvetica", 10),anchor=W, justify=LEFT)
-b6.place(x=295,y=210)
+b6.place(x=315,y=235)
 
 #################
 
@@ -506,35 +521,34 @@ b6.place(x=100,y=510)
 var5= IntVar()
 CB3=Checkbutton(tab1, text = "Random Forest",  variable=var5, \
                  onvalue = 1, offvalue = 0, font=("Helvetica", 12))
-CB3.place(x=280,y=250)
+CB3.place(x=280,y=280)
 
 L11T1= tk.Label(tab1, text="Max depth",font=("Helvetica", 10))
-L11T1.place(x=240,y=280)
+L11T1.place(x=240,y=310)
 Criterion25=StringVar()
+MaxFeatures_None = ttk.Radiobutton(tab1, text='None', variable=Criterion25, value='none',command=disable1)   
+MaxFeatures_None.place(x=310,y=313)
+MaxFeatures_integer = ttk.Radiobutton(tab1, text='Number', variable=Criterion25, value='integer',command=enable1)   
+MaxFeatures_integer.place(x=370,y=313)                                          
+E6T1 = tk.Entry(tab1,textvariable=MaxFeatures_integer, width=7,state=DISABLED)
+E6T1.place(x=380,y=333)
 Criterion25.set('none')
-MaxFeatures_None = ttk.Radiobutton(tab1, text='None', variable=Criterion25, value='none')   
-MaxFeatures_None.place(x=310,y=283)
-MaxFeatures_integer = ttk.Radiobutton(tab1, text='Number', variable=Criterion25, value='integer')   
-MaxFeatures_integer.place(x=370,y=283)                                          
-E6T1 = tk.Entry(tab1,textvariable=MaxFeatures_integer, width=7)
-E6T1.place(x=380,y=303)
-
 
 L12T1= tk.Label(tab1, text="Minimum samples leaf",font=("Helvetica", 10))
-L12T1.place(x=240,y=330)
+L12T1.place(x=240,y=360)
 E7T1 = tk.Entry(tab1, width=10)
-E7T1.place(x=380,y=333)
+E7T1.place(x=380,y=363)
 
 
 L13T1= tk.Label(tab1, text="Minimum samples split",font=("Helvetica", 10))
-L13T1.place(x=240,y=360)
+L13T1.place(x=240,y=390)
 E8T1 = tk.Entry(tab1, width=10)
-E8T1.place(x=380,y=363)
+E8T1.place(x=380,y=393)
 
 L14T1= tk.Label(tab1, text="Number of Estimators",font=("Helvetica", 10))
-L14T1.place(x=240,y=390)
+L14T1.place(x=240,y=420)
 E9T1 = tk.Entry(tab1, width=10)
-E9T1.place(x=380,y=393)
+E9T1.place(x=380,y=423)
 
 
 Criterion9 = StringVar()
@@ -543,12 +557,12 @@ Criterion11 = BooleanVar()
 
 
 L15T1= tk.Label(tab1, text="Criterion",font=("Helvetica", 10))
-L15T1.place(x=240,y=420)
+L15T1.place(x=240,y=480)
 C20= ttk.Radiobutton(tab1, text='Gini', variable=Criterion9, value='gini')
 C21= ttk.Radiobutton(tab1, text='Entropy', variable=Criterion9, value='entropy')
 
-C20.place(x=310,y=420)
-C21.place(x=380,y=420)
+C20.place(x=310,y=480)
+C21.place(x=360,y=480)
 
 
 L9T1= tk.Label(tab1, text="Max features",font=("Helvetica", 10))
@@ -561,16 +575,16 @@ C16.place(x=370,y=450)
 C16_1.place(x=420,y=450)
 
 L10T1= tk.Label(tab1, text="Bootstrap",font=("Helvetica", 10))
-L10T1.place(x=240,y=480)
+L10T1.place(x=240,y=510)
 C17= ttk.Radiobutton(tab1, text='True', variable=Criterion11, value=True)
 C18= ttk.Radiobutton(tab1, text='False', variable=Criterion11, value=False)
 
-C17.place(x=330,y=480)
-C18.place(x=380,y=480)
+C17.place(x=310,y=510)
+C18.place(x=360,y=510)
 
 
 b6=Button(tab1, text='Generate', command=sol,bg="orange",font=("Helvetica", 10),anchor=W, justify=LEFT)
-b6.place(x=330,y=510)
+b6.place(x=330,y=530)
 
 ###################
 
@@ -583,12 +597,12 @@ L11T1= tk.Label(tab1, text="Max depth",font=("Helvetica", 10))
 L11T1.place(x=460,y=250)
 Criterion26=StringVar()
 Criterion26.set('none')
-MaxFeatures1_None = ttk.Radiobutton(tab1, text='None', variable=Criterion26, value='none')   
+MaxFeatures1_None = ttk.Radiobutton(tab1, text='None', variable=Criterion26, value='none',command=disable)   
 MaxFeatures1_None.place(x=530,y=250)
-MaxFeatures1_integer = ttk.Radiobutton(tab1, text='Number', variable=Criterion26, value='integer')   
+MaxFeatures1_integer = ttk.Radiobutton(tab1, text='Number', variable=Criterion26, value='integer',command=enable)   
 MaxFeatures1_integer.place(x=610,y=250)                                          
 
-E10T1 = tk.Entry(tab1, textvariable=MaxFeatures1_integer, width=7)
+E10T1 = tk.Entry(tab1, textvariable=MaxFeatures1_integer, width=7,state=DISABLED)
 E10T1.place(x=620,y=270)
 
 L12T1= tk.Label(tab1, text="Minimum samples leaf",font=("Helvetica", 10))
@@ -660,9 +674,7 @@ b3=tk.Button(tab1,text='Browse', command=data3,font=("Helvetica", 10))
 b3.place(x=480,y=560)  
 
 b4=Button(tab1, text='Submit', command=sol2,bg="orange",font=("Helvetica", 10),anchor=W, justify=LEFT)
-b4.place(x=300,y=585)
-
-
+b4.place(x=320,y=590)
 
 tab_parent.pack(expand=1, fill='both')
 
