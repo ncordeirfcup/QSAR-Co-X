@@ -1,0 +1,5 @@
+activation,learning_rate,alpha
+identity,constant,0.0001
+logistic,adaptive,0.001
+tanh,invscaling,0.01
+relu,,0.1

@@ -1,0 +1,8 @@
+criterion,max_features,max_depth,n_estimators,min_samples_leaf,min_samples_split
+gini,auto,10,50,1,2
+entropy,sqrt,30,100,2,5
+,log2,50,200,4,10
+,,70,500,0,0
+,,90,0,0,0
+,,100,0,0,0
+,,200,0,0,0
