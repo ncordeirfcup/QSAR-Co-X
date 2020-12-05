@@ -38,8 +38,8 @@ class kmca():
              ad3=nd
           #nd.to_csv('nd.csv',index=False)
           tr=ad3[ad3['Set']=='Train']
-          tr=tr.drop(['Set'],axis=1)
+          tr=tr.drop(['Set','cluster'],axis=1)
           ts=ad3[ad3['Set']=='Test']
-          ts=ts.drop(['Set'],axis=1)
+          ts=ts.drop(['Set','cluster'],axis=1)
           return tr,ts
           
