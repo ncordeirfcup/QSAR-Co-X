@@ -24,7 +24,7 @@ class stepwise_selection():
         corr_matrix = X.corr()
         for i in range(len(corr_matrix.columns)):
             for j in range(i):
-                if (corr_matrix.iloc[i, j] > float(cthreshold)) and (corr_matrix.columns[j] not in col_corr):
+                if (abs(corr_matrix.iloc[i, j]) > float(cthreshold)) and (corr_matrix.columns[j] not in col_corr):
                     colname = corr_matrix.columns[i] # getting the name of column
                     col_corr.add(colname)
                     if colname in X.columns:
