@@ -86,7 +86,7 @@ def Sol():
     l3=pd.concat([l2,l1], axis=1)
     l3=l3.drop(['index'],axis=1)
     #l3.set_index('index')
-    l3.to_csv(str(c_)+'_cond'+'.csv', index=True)
+    l3.to_csv(str(c_)+'_cond'+'.csv', index=False)
     
 
 def Sol2():
