@@ -169,7 +169,7 @@ def sol2():
         clf.fit(Xtr,ytr)
         yprvd=pd.DataFrame(clf.predict(Xvd))
         yprvd.columns=['Pred']
-        yprvd2=pd.DataFrame(est.predict_proba(Xvd))
+        yprvd2=pd.DataFrame(clf.predict_proba(Xvd))
         yprvd2.columns=['%Prob(-1)','%Prob(+1)']
         dfsvd=pd.concat([file3,yprvd,yprvd2],axis=1)
         dfsvd['Diff']=abs(dfsvd['%Prob(-1)']-dfsvd['%Prob(+1)'])
