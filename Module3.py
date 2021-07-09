@@ -166,12 +166,12 @@ def sol2():
     
         
     else:
-        est.fit(Xtr,ytr)
+        clf.fit(Xtr,ytr)
         yprvd=pd.DataFrame(clf.predict(Xvd))
         yprvd.columns=['Pred']
         yprvd2=pd.DataFrame(est.predict_proba(Xvd))
         yprvd2.columns=['%Prob(-1)','%Prob(+1)']
-        dfsvd=pd.concat([file3,yprvd2],axis=1)
+        dfsvd=pd.concat([file3,yprvd,yprvd2],axis=1)
         dfsvd['Diff']=abs(dfsvd['%Prob(-1)']-dfsvd['%Prob(+1)'])
         dfsvd['Outlier_info(Confidence estimation approach, Threshold 0.5)']=['In' if x>=0.5 else 'Outlier' for x in dfsvd['Diff']]
         dfsvd['Set'] = 'Screening'
