@@ -285,7 +285,7 @@ def sol2():
         yprvd.columns=['Pred']
         yprvd2=pd.DataFrame(clfb.predict_proba(Xvd))
         yprvd2.columns=['%Prob(-1)','%Prob(+1)']
-        dfsvd=pd.concat([file3,yprvd2],axis=1)
+        dfsvd=pd.concat([file3,yprvd,yprvd2],axis=1)
         dfsvd['Diff']=abs(dfsvd['%Prob(-1)']-dfsvd['%Prob(+1)'])
         dfsvd['Outlier_info(Confidence estimation approach, Threshold 0.5)']=['In' if x>=0.5 else 'Outlier' for x in dfsvd['Diff']]
         dfsvd['Set'] = 'Screening'
