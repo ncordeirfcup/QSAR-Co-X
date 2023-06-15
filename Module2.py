@@ -304,8 +304,8 @@ def ROCplot(model,X,y,label,color,plt):
     plt.legend(fontsize=18)
     plt.tick_params(labelsize=18)
     rocn=str(c_)+str(t)+'_ROC.png'
-    plt.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', papertype=None, \
-                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1,frameon=None,metadata=None)
+    plt.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', \
+                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1, metadata=None)
              
     
 def writefile(X,y,model,filerw):
