@@ -360,8 +360,8 @@ def writefile3():
        pyplot.legend(fontsize=18)
        pyplot.tick_params(labelsize=18)
        rocn=str(e_)+'_ROC.png'
-       pyplot.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', papertype=None, \
-                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1,frameon=None,metadata=None)
+       pyplot.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', \
+                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1,metadata=None)
         
     else:
        #filer2 = open("resultvd.txt","w")
@@ -390,8 +390,8 @@ def writefile3():
        pyplot.legend(fontsize=18)
        pyplot.tick_params(labelsize=18)
        rocn=str(e_)+'_ROC.png'
-       pyplot.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', papertype=None, \
-                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1,frameon=None,metadata=None)
+       pyplot.savefig(rocn, dpi=300, facecolor='w', edgecolor='w',orientation='portrait', \
+                      format=None,transparent=False, bbox_inches=None, pad_inches=0.1,metadata=None)
     
 def ycrand(): 
     s=file4[[file4.iloc[:,0:1].columns[0],file4.iloc[:,-1:].columns[0]]]
