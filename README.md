@@ -1,5 +1,6 @@
 # QSAR-Co-X
-![alt text](https://media.istockphoto.com/id/959504520/vector/multi-channel-icon.jpg?s=612x612&w=0&k=20&c=-P9bCrHrTAGjCc3lF47Ffv9xNMobWl4RRc8yvO8Mjqs=)
+
+![image_1](https://github.com/ncordeirfcup/QSAR-Co-X/assets/68471523/f4b2c827-a602-4b04-a0a8-39f1ac3bc254)
 
 Read the instruction manual carefully
 The published article:
